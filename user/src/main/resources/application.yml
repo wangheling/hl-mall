@@ -2,6 +2,7 @@ server:
   port: 1004
   servlet:
     context-path: /user
+
 spring:
   application:
     name: user-service
@@ -11,6 +12,15 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:1001/eureka
+
 feign:
+#  compression: # 对请求和响应进行压缩，减少通信中性能损耗，默认false
+#    request:
+#      enabled: true
+#    response:
+#      enabled: true
   hystrix:
     enabled: true
+logging:
+  level:
+    com.heling.service.OrderService: debug
