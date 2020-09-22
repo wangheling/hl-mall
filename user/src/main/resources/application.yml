@@ -1,11 +1,16 @@
 server:
   port: 1004
+  servlet:
+    context-path: /user
 spring:
   application:
     name: user-service
 eureka:
   client:
-    register-with-eureka: true #注册到Eureka的注册中心
-    fetch-registry: true #获取注册实例列表
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
       defaultZone: http://localhost:1001/eureka
+feign:
+  hystrix:
+    enabled: true
