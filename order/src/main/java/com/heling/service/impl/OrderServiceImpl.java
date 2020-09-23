@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
 
         long start = System.currentTimeMillis();
         try {
-            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(2000));
+            TimeUnit.MILLISECONDS.sleep(new Random().nextInt(1000));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

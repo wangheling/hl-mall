@@ -21,6 +21,9 @@ feign:
 #      enabled: true
   hystrix:
     enabled: true
+
+
+
 logging:
   level:
     com.heling.service.OrderService: debug
