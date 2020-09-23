@@ -22,9 +22,17 @@ feign:
   hystrix:
     enabled: true
 
-
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 2000
+        loggerLevel: basic
+      order-service:
+        connectTimeout: 1000
+        readTimeout: 1000
+        loggerLevel: basic
 
 logging:
   level:
     com.heling.service.OrderService: debug
-
