@@ -17,7 +17,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:1001/eureka
 
- 通过访问http://localhost:1000/zuul/actuator/routes查看简单路由信息
+# 通过访问http://localhost:1000/zuul/actuator/routes查看简单路由信息
 management:
   endpoints:
     web:
