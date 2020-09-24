@@ -1,7 +1,5 @@
 package com.heling.config;
 
-import com.netflix.loadbalancer.IRule;
-import com.netflix.loadbalancer.RoundRobinRule;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,12 +19,18 @@ public class RibbonConfig {
         return new RestTemplate();
     }
 
-
-    @Bean
-    public IRule ribbonRule() {
-        return new RoundRobinRule();
-    }
-
-
+    /**
+     * 配置负载均衡策略
+     *
+     * @desc:
+     * @param:
+     * @return:
+     * @author: heling
+     */
+//    @Bean
+//    public IRule ribbonRule() {
+//        return new RandomRule();
+////        return new RoundRobinRule();
+//    }
 
 }
