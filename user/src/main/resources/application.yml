@@ -21,7 +21,6 @@ feign:
 #      enabled: true
   hystrix:
     enabled: true
-
   client:
     config:
       default:
@@ -29,9 +28,9 @@ feign:
         readTimeout: 2000
         loggerLevel: basic
       order-service:
-        connectTimeout: 1000
-        readTimeout: 1000
-        loggerLevel: basic
+        connectTimeout: 500
+        readTimeout: 500
+        loggerLevel: full
 
 logging:
   level:

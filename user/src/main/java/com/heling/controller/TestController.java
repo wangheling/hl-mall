@@ -14,21 +14,35 @@ import javax.annotation.Resource;
  * @Date: 2020/9/22 16:14
  */
 @RestController
-public class UserController {
+public class TestController {
 
     @Resource
     private OrderService orderService;
     @Resource
     private RestTemplate restTemplate;
 
-    @GetMapping("/{userId}")
-    public String test(@PathVariable("userId") String userId) {
-        return orderService.test(userId);
-    }
-
+    /**
+     * 测试ribbon
+     * @desc:
+     * @param:
+     * @return:
+     * @author: heling
+     */
     @GetMapping("/ribbon/{userId}")
     public String testRibbon(@PathVariable("userId") String userId) {
         return restTemplate.getForObject("http://order-service" + "/order/order/{1}", String.class, userId);
+    }
+
+    /**
+     * 测试feign
+     * @desc:
+     * @param:
+     * @return:
+     * @author: heling
+     */
+    @GetMapping("/feign/{userId}")
+    public String test(@PathVariable("userId") String userId) {
+        return orderService.test(userId);
     }
 
 }

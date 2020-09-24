@@ -1,6 +1,5 @@
 package com.heling.service;
 
-//import com.heling.config.FullLogConfiguration;
 import com.heling.service.impl.OrderFallBackService;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
