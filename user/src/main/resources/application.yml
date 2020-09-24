@@ -26,24 +26,34 @@ feign:
       default:
         connectTimeout: 2000
         readTimeout: 2000
-        loggerLevel: basic
-      order-service:
-        connectTimeout: 500
-        readTimeout: 500
         loggerLevel: full
-order-service:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #随机
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule #轮询
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RetryRule #重试
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule #响应时间权重
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.BestAvailableRule #最空闲连接策略
-    ConnectTimeout: 500 #请求连接超时时间
-    ReadTimeout: 500 #请求处理的超时时间
-    OkToRetryOnAllOperations: true #对所有请求都进行重试
-    MaxAutoRetriesNextServer: 2 #切换实例的重试次数
-
+#      order-service:
+#        connectTimeout: 500
+#        readTimeout: 500
 
 logging:
   level:
     com.heling.service.OrderService: debug
+
+ribbon:
+  ConnectTimeout: 500 #请求连接超时时间
+  ReadTimeout: 500 #请求处理的超时时间
+  OkToRetryOnAllOperations: false # 配置为true时，对所有请求都进行重试
+  # 配置为false时，GET请求方式也会进行重试，非GET方法只有在连接异常时才会进行重试
+  MaxAutoRetriesNextServer: 1 #切换实例的重试次数
+  MaxAutoRetries: 1
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+#order-service:
+#  ribbon:
+#    ConnectTimeout: 500 #请求连接超时时间
+#    ReadTimeout: 500 #请求处理的超时时间
+#    OkToRetryOnAllOperations: false # 配置为true时，对所有请求都进行重试
+#                                    # 配置为false时，GET请求方式也会进行重试，非GET方法只有在连接异常时才会进行重试
+#    MaxAutoRetriesNextServer: 1 #切换实例的重试次数
+#    MaxAutoRetries: 1
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #随机
+#    #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule #轮询
+#    #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RetryRule #重试
+#    #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule #响应时间权重
+#    #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.BestAvailableRule #最空闲连接策略
