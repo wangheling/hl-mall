@@ -2,8 +2,10 @@ package com.heling.service.impl;
 
 import com.heling.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -15,6 +17,10 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    @Resource
+    private KafkaTemplate<String, String> kafkaTemplate;
+
     @Override
     public String test(String userId) {
 
@@ -24,6 +30,7 @@ public class OrderServiceImpl implements OrderService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        kafkaTemplate.send("testTopic", userId + "创建订单");
         log.info("耗时{}ms", System.currentTimeMillis() - start);
         return "用户" + userId + "创建订单成功";
     }

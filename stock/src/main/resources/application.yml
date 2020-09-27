@@ -3,10 +3,16 @@ server:
 spring:
   application:
     name: stock-service
+  kafka:
+    bootstrap-servers: 192.168.1.83:9092
+    consumer:
+      group-id: testGroup
+      auto-offset-reset: earliest
+      enable-auto-commit: true
 
 eureka:
   client:
-    register-with-eureka: true #注册到Eureka的注册中心
-    fetch-registry: true #获取注册实例列表
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
       defaultZone: http://localhost:1001/eureka
