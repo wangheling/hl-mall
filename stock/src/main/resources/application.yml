@@ -10,6 +10,7 @@ spring:
       auto-offset-reset: earliest
       enable-auto-commit: true
 
+
 eureka:
   client:
     register-with-eureka: true

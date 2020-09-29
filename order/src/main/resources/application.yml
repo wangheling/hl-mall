@@ -6,8 +6,7 @@ spring:
   application:
     name: order-service
   kafka:
-    producer:
-      bootstrap-servers: 192.168.1.83:9092
+    bootstrap-servers: 192.168.1.83:9092
 
 eureka:
   client:
